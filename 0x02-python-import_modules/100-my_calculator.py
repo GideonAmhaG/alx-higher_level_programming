@@ -9,7 +9,7 @@ if __name__ == "__main__":
     if prm == 3:
         op = av[2]
         a = int(av[1])
-        b = int(av[2])
+        b = int(av[3])
 
         if op == "+":
             print("{:d} + {:d} = {:d}".format(a, b, add(a, b)))
