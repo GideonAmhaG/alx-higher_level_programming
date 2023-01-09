@@ -12,16 +12,11 @@ int is_palindrome(listint_t **head)
 {
 	listint_t *rev, *current;
 
-	if (head == NULL)
-		return (1);
-
-	if (*head == NULL)
+	if (head == NULL || *head == NULL)
 		return (1);
 
 	current = *head;
 	rev = reverse_listint(head);
-	if (rev == NULL)
-		return (1);
 	while (current)
 	{
 		if (current->n != rev->n)
