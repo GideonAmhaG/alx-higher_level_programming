@@ -20,6 +20,8 @@ int is_palindrome(listint_t **head)
 
 	current = *head;
 	rev = reverse_listint(head);
+	if (rev == NULL)
+		return (1);
 	while (current)
 	{
 		if (current->n != rev->n)
