@@ -1,7 +1,9 @@
 #!/usr/bin/python3
-"""Square class"""
+""" Module """
 
 
 class Square:
+    """ Square class """
     def __init__(self, size):
+        """ Initilize function """
         self.__size = size
