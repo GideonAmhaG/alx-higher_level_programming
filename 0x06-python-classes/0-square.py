@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-"""Square Class
-This class don't do anything for the moment
-"""
+"""Example Empty Class Square"""
 
 
 class Square:
+    # Pass is necesary, because i need a one line into class
     pass
