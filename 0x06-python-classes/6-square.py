@@ -54,4 +54,3 @@ class Square:
                     if i < self.area():
                         for j in range(self.__position[0]):
                             print(" ", end="")
-
