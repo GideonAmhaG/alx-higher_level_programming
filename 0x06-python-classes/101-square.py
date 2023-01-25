@@ -61,8 +61,8 @@ class Square:
             if j % self.__size == 0:
                 print()
 
-	def __str__(self):
-        """Same print behaviour as my_print"""
+    def __str__(self):
+        """ Same print behaviour as my_print"""
         s = ""
         if not self.__size:
             return s
