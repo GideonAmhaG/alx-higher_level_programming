@@ -60,3 +60,20 @@ class Square:
                 print("#", end="")
             if j % self.__size == 0:
                 print()
+
+    def __str__(self):
+        """ Enables print to be called on a Square object """
+        s = ""
+        if self.__size == 0:
+            return s
+        if self.__position[1] > 0:
+            for i in range(self.__position[1]):
+                s += ""
+        for j in range(1, self.area() + 1):
+            if j % self.__size == 1:
+                s += "{:>{w}}".format("#", w=self.__position[0] + 1)
+            else:
+                s += "#"
+            if j % self.__size == 0:
+                s += "\n"
+        return s[:-1]
