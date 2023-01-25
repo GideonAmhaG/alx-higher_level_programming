@@ -1,71 +1,79 @@
 #!/usr/bin/python3
-""" Module: Node class and SinglyLnkedList class """
+""" Module: Square class """
 
 
-class Node:
-    """ Node class """
-    def __init__(self, data, next_node=None):
+class Square:
+    """ Square class """
+    def __init__(self, size=0, position=(0, 0)):
         """ Initilize function """
-        self.data = data
-        self.next_node = next_node
+        self.size = size
+        self.position = position
 
     @property
-    def data(self):
+    def size(self):
         """ Getter function """
-        return self.__data
+        return self.__size
 
-    @data.setter
-    def data(self, data):
+    @size.setter
+    def size(self, size):
         """ Setter function """
-        if type(data) is not int:
-            raise TypeError("data must be an integer")
-        self.__data = data
+        if type(size) is not int:
+            raise TypeError("size must be an integer")
+        if size < 0:
+            raise ValueError("size must be >= 0")
+        self.__size = size
 
     @property
-    def next_node(self):
+    def position(self):
         """ Getter function """
-        return self.__next_node
+        return self.__position
 
-    @next_node.setter
-    def next_node(self, next_node):
+    @position.setter
+    def position(self, position):
         """ Setter function """
-        if next_node is not None and type(next_node) is not Node:
-            raise TypeError("next_node must be a Node object")
-        self.__next_node = next_node
+        if type(position) is not tuple:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if len(position) != 2:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if type(position[0]) is not int or type(position[1]) is not int:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if position[0] < 0 or position[1] < 0:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        self.__position = position
 
+    def area(self):
+        """ Returns area of the square """
+        return self.__size * self.__size
 
-class SinglyLinkedList:
-    """ SinglyLinkedList class: Inserts and prints """
-    def __init__(self):
-        """ Initilize function """
-        self.__head = None
-
-    def sorted_insert(self, value):
-        """ Inserts a new Node into the correct sorted position in the
-        list (increasing order) """
-        new = Node(value, None)
-        current = self.__head
-        is_start = False
-        if not self.__head:
-            self.__head = new
-        else:
-            if value < self.__head.data:
-                is_start = True
-            while current.next_node and value > current.next_node.data\
-                    and not is_start:
-                current = current.next_node
-            if not is_start:
-                new.next_node = current.next_node
-                current.next_node = new
+    def my_print(self):
+        """ Prints a square of # """
+        if self.__size == 0:
+            print()
+            return None
+        if self.__position[1] > 0:
+            for i in range(self.__position[1]):
+                print("")
+        for j in range(1, self.area() + 1):
+            if j % self.__size == 1:
+                print("{:>{w}}".format("#", w=self.__position[0] + 1), end="")
             else:
-                new.next_node = current
-                self.__head = new
+                print("#", end="")
+            if j % self.__size == 0:
+                print()
 
     def __str__(self):
-        """ Enables calling a print on a SinglyLinkedList object """
+        """ Enables print to be called on a Square object """
         s = ""
-        current = self.__head
-        while current:
-            s += str(current.data) + "\n"
-            current = current.next_node
-        return s
+        if self.__size == 0:
+            return s
+        if self.__position[1] > 0:
+            for i in range(self.__position[1]):
+                s += ""
+        for j in range(1, self.area() + 1):
+            if j % self.__size == 1:
+                s += "{:>{w}}".format("#", w=self.__position[0] + 1)
+            else:
+                s += "#"
+            if j % self.__size == 0:
+                s += "\n"
+        return s[:-1]
