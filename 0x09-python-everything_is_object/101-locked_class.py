@@ -2,5 +2,5 @@
 """ Locked class module """
 
 
-class LockedClass(object):
-    __slots__ = "first_name"
+class LockedClass:
+    __slots__ = ["first_name"]
