@@ -2,7 +2,7 @@
 """ My list module """
 
 
-class Mylist(list):
+class MyList(list):
     """ A class that inherits from class list """
     def print_sorted(self):
         """ Prints the list, but sorted (ascending sort """
