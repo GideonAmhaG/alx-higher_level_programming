@@ -10,4 +10,4 @@ class MyInt(int):
 
     def __ne__(self, other):
         """ Inverts not equal """
-        return super(MyInt, slef).__eq__(other)
+        return super(MyInt, self).__eq__(other)
