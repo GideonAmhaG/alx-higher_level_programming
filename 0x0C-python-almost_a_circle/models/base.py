@@ -6,6 +6,7 @@ class Base:
     """ Manages id attribute in all future classes and avoids duplicating
     the same code (by extension, same bugs) """
     __nb_objects = 0
+
     def __init__(self, id=None):
         """ Class constructor """
         if id is not None:

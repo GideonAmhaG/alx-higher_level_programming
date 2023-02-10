@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Rectangle class module """
+from models.base import Base
 
 
 class Rectangle(Base):
@@ -25,7 +26,7 @@ class Rectangle(Base):
         if value <= 0:
             raise ValueError("width must be > 0")
         self.__width = value
-    
+
     @property
     def height(self):
         """ Getter function """
@@ -39,7 +40,7 @@ class Rectangle(Base):
         if value <= 0:
             raise ValueError("height must be > 0")
         self.__height = value
-    
+
     @property
     def x(self):
         """ Getter function """
@@ -67,3 +68,40 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
+
+    def area(self):
+        """ Returns area of the rectangle """
+        return self.__width * self.__height
+
+    def display(self):
+        """ Prints in stdout the Rectangle instance with the character # """
+        if self.__y > 0:
+            print("\n" * self.__y, end="")
+        for i in range(self.__height):
+            if self.__x > 0:
+                print(" " * self.__x, end="")
+            print("#" * self.__width)
+
+    def update(self, *args, **kwargs):
+        """ Assigns an argument to each attribute """
+        if args:
+            attr = ["id", "width", "height", "x", "y"]
+            for i, elem in enumerate(args):
+                setattr(self, attr[i], elem)
+        else:
+            for key, value in kwargs.items():
+                if hasattr(self, key):
+                    setattr(self, key, value)
+
+    def to_dictionary(self):
+        """ Returns the dictionary representation of a Rectangle """
+        my_dict = {}
+        for key, value in self.__dict__.items():
+            short_key = key.split("__")[-1]
+            my_dict[short_key] = value
+        return my_dict
+
+    def __str__(self):
+        """ Allows print to be called on Rectangle """
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x,
+                self.__y, self.__width, self.__height)
