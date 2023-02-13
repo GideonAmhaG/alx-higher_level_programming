@@ -25,7 +25,8 @@ class Square(Rectangle):
         if args:
             attr = ["id", "size", "x", "y"]
             for i, elem in enumerate(args):
-                setattr(self, attr[i], elem)
+                if i < len(attr):
+                    setattr(self, attr[i], elem)
         else:
             for key, value in kwargs.items():
                 if hasattr(self, key):
@@ -40,5 +41,5 @@ class Square(Rectangle):
 
     def __str__(self):
         """ Allows print to be called on Square """
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y,
-                self.size)
+        return "[Square] ({}) {}/{} - {}".format(
+                self.id, self.x, self.y, self.size)

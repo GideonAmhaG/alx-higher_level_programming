@@ -87,7 +87,8 @@ class Rectangle(Base):
         if args:
             attr = ["id", "width", "height", "x", "y"]
             for i, elem in enumerate(args):
-                setattr(self, attr[i], elem)
+                if i < len(attr):
+                    setattr(self, attr[i], elem)
         else:
             for key, value in kwargs.items():
                 if hasattr(self, key):
@@ -103,5 +104,5 @@ class Rectangle(Base):
 
     def __str__(self):
         """ Allows print to be called on Rectangle """
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x,
-                self.__y, self.__width, self.__height)
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+                self.id, self.__x, self.__y, self.__width, self.__height)
