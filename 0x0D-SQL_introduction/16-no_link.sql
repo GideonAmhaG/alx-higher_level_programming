@@ -2,5 +2,5 @@
 -- in your MySQL server
 SELECT score, name
 FROM second_table
-WHERE IS NOT NULL
+WHERE name IS NOT NULL
 ORDER BY score DESC;
