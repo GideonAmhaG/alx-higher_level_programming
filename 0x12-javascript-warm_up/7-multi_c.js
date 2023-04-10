@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const num = parseInt(process.argv[2]);
 if (num) {
-  for (let i = 0; i < limit; i++) {
+  for (let i = 0; i < num; i++) {
     console.log('C is fun');
   }
 } else {
