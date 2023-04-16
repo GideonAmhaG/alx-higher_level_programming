@@ -1,17 +1,20 @@
 #!/usr/bin/python3
-"""module for a script that takes in the name of a state as an argument
-and lists all cities of that state, using the database"""
-import MySQLdb
+"""module for a script that that prints the first State object from the
+database hbtn_0e_6_usa"""
 from sys import argv
-
+from relationship_state import Base, State
+from relationship_city import City
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(host="localhost", port=3306,
-                         user=argv[1], passwd=argv[2], db=argv[3])
-    cur = db.cursor()
-    cur.execute("""SELECT cities.id, cities.name, states.name FROM cities
-                 LEFT JOIN states ON cities.state_id = states.id
-                 WHERE states.name = %s
-                 ORDER BY cities.id ASC""", (argv[4],))
-    for row in cur.fetchall():
-        print(", ".join(row[1]))
+    engine = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}".format(
+                            argv[1], argv[2], argv[3]))
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    new_state = State(name="California")
+    new_city = City(name="San Francisco")
+    new_state.cities.append(new_city)
+    session.add(new_state)
+    session.commit()
+    session.close()
