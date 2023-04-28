@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Fetches basic request with urlib"""
+"""fetches https://alx-intranet.hbtn.io/status"""
 from urllib import request
 
 with request.urlopen("https://alx-intranet.hbtn.io/status") as response:
