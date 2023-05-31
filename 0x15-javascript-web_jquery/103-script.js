@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
       $('DIV#hello').html(data.hello)));
   $('INPUT#language_code').keydown((e) => {
     if (e.which === 13) {
-      $.get('https://fourtonfish.com/hellosalut/?lang=' +
+      $.get('https://hellosalut.stefanbohacek.dev/?lang=' +
       $('INPUT#language_code').val(), (data) =>
         $('DIV#hello').html(data.hello));
     } else return true;
